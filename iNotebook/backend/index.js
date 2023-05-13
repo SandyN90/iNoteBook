@@ -27,14 +27,15 @@ const port = 8000;
 const routes = {
 
     "/user": "UserProfile",
-    "/": "HelloWorld",
+    "/": "HomePage",
+    "/404": "404"
 }
 
 
 const app = https.createServer((req, res) => {
     let routeName;
 
-if(!routes[req.url]) routeName = routes["/"];
+if(!routes[req.url]) routeName = routes["/404"];
 else routeName = routes[req.url];
     
     fs.readFile(`../backend/src/components/${routeName}.html`, (err, data) => {
