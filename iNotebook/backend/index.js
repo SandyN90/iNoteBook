@@ -1,27 +1,6 @@
-// import express from 'express';
-// // import HelloWorld from './src/components'
-// //  Here we have created an instance of express
-
-// const app = express();
-
-// const port  =  3000;
-
-// const data = {
-//  name: "sandeep",
-//  age:27
-// }
-
-// app.get("/sandy", (req, res)=> {
-//     // res.setHeader("content-type", "application/json");
-//     res.statusCode = 200;
-//     res.end("data");
-// })
-
-// app.listen(port, ()=> {
-//     console.log(`This port has been runninng on ${port}`);
-// })
 const https = require('http');
 const fs = require('fs');
+require('./connection.js')
 
 const port = 8000;
 const routes = {
