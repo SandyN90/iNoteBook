@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../user/userSchema');
 
 const routes = {
 
@@ -19,7 +20,7 @@ router.get('/', (req, res)=> {
 })
 
 router.post("/user", (req, res)=> {
-    console.log("data", data);
+    console.log("data", req.body);
     res.json({message: data});
 })
 
