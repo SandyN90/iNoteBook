@@ -8,10 +8,19 @@ const routes = {
     "/404": "404"
 }
 
-const middleWare = ()=> {
-    console.log("This is middleware");
+const data = {
+    name:"Shravan",
+    age: 16,
+    height: 5.9,
 }
 
-router.post("/", middleWare, (req)=> {
-    console.log("data", req.body);
+router.get('/', (req, res)=> {
+    res.send("This is home page data");
 })
+
+router.post("/user", (req, res)=> {
+    console.log("data", data);
+    res.json({message: data});
+})
+
+module.exports = router;
