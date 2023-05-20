@@ -20,8 +20,23 @@ router.get('/', (req, res)=> {
 })
 
 router.post("/user", (req, res)=> {
+
+    const {email, password, cPassword, mNumber, name} = req.body;
+
+    if(!email || !password || !cPassword || !name){
+       return res.status(422).json({message: console.log("Please, fill the field property")})
+    }
+    User.findOne(({email: email}))
+    .then(((userExist)=> {
+        if (userExist) return res.status(422).json({message: console.log("User is already exist!")})
+        
+        const user = new User({email, password, cPassword, mNumber, name});
+
+        user.save().then(()=> {
+            res.status(201).json({message: "user registered successfully"});
+        }).catch((err)=> res.status(500).json({error: "Failed to registered"}));
+    })).catch((err)=> {console.log(err)})
     console.log("data", req.body);
-    res.json({message: data});
 })
 
 module.exports = router;

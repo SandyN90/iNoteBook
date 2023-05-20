@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     mNumber: {
-        type: String,
+        type: Number,
     },
     name: {
         type: String,
@@ -23,3 +23,9 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('USER', userSchema);
+
+// const fetchData = (callBack)=> {
+
+// }
+
+module.exports = User;
