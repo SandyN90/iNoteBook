@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../user/userSchema');
+const getData = require('./../user/fetchData');
 
 const routes = {
 
@@ -16,6 +17,8 @@ const data = {
 }
 
 router.get('/', (req, res)=> {
+    const newData = getData();
+    console.log(newData)
     res.send("This is home page data");
 })
 
