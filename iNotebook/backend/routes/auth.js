@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../user/userSchema');
-const getData = require('./../user/fetchData');
 
 const routes = {
 
