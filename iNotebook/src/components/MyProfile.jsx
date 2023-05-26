@@ -29,22 +29,25 @@ export default function MyProfile() {
     }, [email, name, mNumber, password, cPassword])
     data(url);
 
-    const clear = ()=> {
+    const clear = () => {
         setCPassword("");
         setPassword("");
         setName("");
         setMNumber("");
         setEmail("");
     }
-    const save = ()=> {
-        setPayload({name:name,
-        email: email,
-        password: password,
-        cPassword: cPassword,
-        mNumber: mNumber
-    })
-    console.log("data", payload);
-    
+    const save = () => {
+
+
+        setPayload({
+            name: name,
+            email: email,
+            password: password,
+            cPassword: cPassword,
+            mNumber: mNumber
+        })
+        console.log("data", payload);
+
         // const validated = validateInput();
         // const axiosOptions = {
         //     url: url,
