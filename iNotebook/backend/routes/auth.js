@@ -16,10 +16,8 @@ const data = {
 }
 
 router.get('/', (req, res)=> {
-    const newData = getData();
-    console.log(newData)
     res.send("This is home page data");
-})
+});
 
 router.post("/user", (req, res)=> {
 
