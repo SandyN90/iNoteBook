@@ -1,7 +1,7 @@
 import React from "react";
 import "./../index.css"
 import { HiPhotograph } from 'react-icons/all';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   const navElements = [

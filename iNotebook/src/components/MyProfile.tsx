@@ -1,6 +1,10 @@
-import { react, useEffect, useState } from 'react'
-import data from './../helper/fetchInstance'
+import { useEffect, useState } from 'react'
+import { data } from '../helper/fetchInstance'
+import { AxiosOptions } from '../helper/fetchInstance'
+
+
 export default function MyProfile() {
+
     const userURL = 'http://localhost:8080/user';
     const url = 'https://dummyjson.com/products';
 
@@ -16,7 +20,6 @@ export default function MyProfile() {
     useEffect(()=> {
         console.log("Payload", payload)
     }, [payload]);
-    data(url);
 
     const clear = () => {
         setPayload({
@@ -28,6 +31,14 @@ export default function MyProfile() {
         })
     }
     const save = () => {
+        const axiosPayload: AxiosOptions = {
+            url,
+            method: "POST",
+            payload
+        }
+        if(axiosPayload.method === "POST") axiosPayload.url = "http://localhost:8080/user"; 
+
+        data(axiosPayload);
         console.log("data", payload);
     }
 
@@ -55,7 +66,7 @@ export default function MyProfile() {
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="name" className='text-gray-600'>Mobile Number</label>
-                            <input type="number" value={payload.mNumber} onChange={($event) => setPayload({...payload, mNumber : $event.target.value})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='mNumber' />
+                            <input type="number" value={payload.mNumber} onChange={($event) => setPayload({...payload, mNumber : Number($event.target.value)})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='mNumber' />
                         </div>
                     </div>
                 </div>
