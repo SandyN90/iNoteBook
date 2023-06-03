@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { data } from '../helper/fetchInstance'
-import { AxiosOptions } from '../helper/fetchInstance'
+import { data } from '../helper/fetchData'
+import { AxiosOptions } from '../helper/fetchData'
 
 
 export default function MyProfile() {
 
-    const userURL = 'http://localhost:8080/user';
-    const url = 'https://dummyjson.com/products';
+    const url = '/user';
 
     const [payload, setPayload] = useState({
         name: "",
@@ -17,7 +16,9 @@ export default function MyProfile() {
     });
 
     // Updated lifecycle hook
-    useEffect(()=> {
+    useEffect(() => {
+        const newData = data({ url: "/", method: "GET" });
+        console.log("🚀 ~ file: MyProfile.tsx:21 ~ useEffect ~ newData:", newData)
         console.log("Payload", payload)
     }, [payload]);
 
@@ -36,10 +37,11 @@ export default function MyProfile() {
             method: "POST",
             payload
         }
-        if(axiosPayload.method === "POST") axiosPayload.url = "http://localhost:8080/user"; 
+        if (axiosPayload.method === "POST") axiosPayload.url = "/user";
 
         data(axiosPayload);
         console.log("data", payload);
+        clear();
     }
 
 
@@ -50,23 +52,23 @@ export default function MyProfile() {
                     <div className='grid'>
                         <div className='mb-5'>
                             <label htmlFor="email" className='text-gray-600'> Email</label>
-                            <input type="text" value={payload.email} onChange={($event) => setPayload({...payload, email : $event.target.value})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id="email" />
+                            <input type="text" value={payload.email} onChange={($event) => setPayload({ ...payload, email: $event.target.value })} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id="email" />
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="name" className='text-gray-600'>Name</label>
-                            <input type="text" value={payload.name} onChange={($event) => setPayload({...payload, name : $event.target.value})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='name' />
+                            <input type="text" value={payload.name} onChange={($event) => setPayload({ ...payload, name: $event.target.value })} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='name' />
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="name" className='text-gray-600'>Password</label>
-                            <input type="text" value={payload.password} onChange={($event) => setPayload({...payload, password : $event.target.value})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='password' />
+                            <input type="text" value={payload.password} onChange={($event) => setPayload({ ...payload, password: $event.target.value })} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='password' />
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="name" className='text-gray-600'>Confirm Password</label>
-                            <input type="text" value={payload.cPassword} onChange={($event) => setPayload({...payload, cPassword : $event.target.value})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='cPassword' />
+                            <input type="text" value={payload.cPassword} onChange={($event) => setPayload({ ...payload, cPassword: $event.target.value })} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='cPassword' />
                         </div>
                         <div className='mb-5'>
                             <label htmlFor="name" className='text-gray-600'>Mobile Number</label>
-                            <input type="number" value={payload.mNumber} onChange={($event) => setPayload({...payload, mNumber : Number($event.target.value)})} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='mNumber' />
+                            <input type="number" value={payload.mNumber} onChange={($event) => setPayload({ ...payload, mNumber: Number($event.target.value) })} className='border border-gray-200 w-full rounded-md p-1 focus:outline-none' id='mNumber' />
                         </div>
                     </div>
                 </div>

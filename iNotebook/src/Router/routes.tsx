@@ -8,27 +8,27 @@ import AboutUs from '../components/AboutUs'
 
 const router = createBrowserRouter([
    {
-    path: "/",
-    element: <App/>,
-    children: [
-      {
-         path: "/aboutus",
-         element: <AboutUs/>
-      }
-      ,{
-         path: "/services",
-         element: <Services/>
-        }, 
-        {
-           path: "/contact",
-           element: <Contact/>
-        },
-        {
-         path: "/profile",
-         element: <MyProfile/>
-      }
-    ]
-   }, 
+      path: "/",
+      element: <App />,
+      children: [
+         {
+            path: "/aboutus",
+            element: <AboutUs />
+         }
+         , {
+            path: "/services",
+            element: <Services />
+         },
+         {
+            path: "/contact",
+            element: <Contact />
+         },
+         {
+            path: "/user",
+            element: <MyProfile />
+         }
+      ]
+   },
 ]);
 
 export default router;

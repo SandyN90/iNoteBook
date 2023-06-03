@@ -23,7 +23,7 @@ export default function Navbar() {
     },
     {
       tabName: "My Profile",
-      path: 'profile'
+      path: '/user'
     },
   ]
   return (
